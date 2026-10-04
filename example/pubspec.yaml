@@ -1,0 +1,30 @@
+name: yemen_plate_example
+description: Minimal example — a System A unified car plate, with usage as a country block.
+publish_to: none
+version: 1.0.0
+
+environment:
+  sdk: '>=3.10.0 <4.0.0'
+  flutter: ">=1.17.0"
+
+resolution: workspace
+
+dependencies:
+  flutter:
+    sdk: flutter
+  core_plate: ^0.11.0
+  yemen_plate: ^0.3.0
+
+dev_dependencies:
+  flutter_lints: ^6.0.0
+
+# No `flutter: fonts:` block, and it is not for want of trying. This example
+# originally bundled a substitute face for the plate lettering, and then it
+# turned out that nothing a host declares can reach plate text: `PlateCanvas`
+# wraps its whole face in a `Theme` (see `PlateCanvas`'s `Theme` wrapper) to
+# pin the cursor and selection colours, and the `Material` under it installs
+# that theme's `bodyMedium` as
+# the default text style. `PlateTheme.glyphStyle` sets no `fontFamily` either,
+# so labels, the panel caption and every slot glyph render in the platform
+# default whatever the app theme says. Bundling a font here would have shipped
+# an asset that changed nothing. See "Fonts" in the package README.
