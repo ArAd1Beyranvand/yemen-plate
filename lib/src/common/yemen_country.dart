@@ -1,17 +1,15 @@
-import 'package:plate_core/plate_core.dart';
 import 'package:flutter/widgets.dart';
+import 'package:plate_core/plate_core.dart';
 
 import 'yemen_colors.dart';
 import 'yemen_usage.dart';
 
-/// Yemen's plate chrome. All have `code: 'ye'`; they compare equal by [PlateCountry]'s
-/// equality rule, so distinguish plates by [PlateSpec.id]. Northern consts carry the
-/// usage word as a caption over a transparent panel (see [northernPrivate]).
+/// Yemen's plate chrome. All share `code: 'ye'` and so compare equal; tell
+/// plates apart by [PlateSpec.id].
 abstract final class YemenCountry {
-  // System A: the blue side panel carries usage captions; colour is the same for all uses.
+  // System A: the blue side panel carries the usage captions.
 
-  /// The blue side panel with no usage text. Not used by specs in this package;
-  /// [unifiedFor] below picks the captioned variants.
+  /// The side panel without a caption; [unifiedFor] picks the captioned ones.
   static const PlateCountry unified = PlateCountry(
     code: 'ye',
     captionLines: <String>[],
@@ -65,8 +63,8 @@ abstract final class YemenCountry {
     flag: null,
   );
 
-  /// The unified panel captioned for [usage], or [unified] (uncaptioned)
-  /// if System A does not issue this usage — returns blank panel instead of throwing.
+  /// The unified panel captioned for [usage], or [unified] if System A does not
+  /// issue it.
   static PlateCountry unifiedFor(YemenUsage usage) => switch (usage) {
     YemenUsage.private => unifiedPrivate,
     YemenUsage.forHire => unifiedForHire,
@@ -76,10 +74,10 @@ abstract final class YemenCountry {
     YemenUsage.military => unified,
   };
 
-  // System B: transparent panel carries the usage word in ink colour; no coloured block.
+  // System B: a transparent panel carrying the usage word in ink.
 
-  /// الیمن - خصوصي, black ink, on transparent panel. Transparent avoids a coloured
-  /// rectangle appearing if the host mistakenly pairs this with the wrong theme.
+  /// الیمن - خصوصي in black ink. The panel is transparent so a mismatched theme
+  /// cannot show a coloured block.
   static const PlateCountry northernPrivate = PlateCountry(
     code: 'ye',
     captionLines: <String>['الیمن - خصوصي'],
@@ -88,8 +86,7 @@ abstract final class YemenCountry {
     flag: null,
   );
 
-  /// اجرة, black ink, on the yellow field. Note the spelling: the northern
-  /// plate prints it without the hamza the unified plate uses.
+  /// اجرة in black ink, spelled without the hamza of the unified plate.
   static const PlateCountry northernForHire = PlateCountry(
     code: 'ye',
     captionLines: <String>['اجرة'],
@@ -98,7 +95,7 @@ abstract final class YemenCountry {
     flag: null,
   );
 
-  /// نقل, black ink, on the red field.
+  /// نقل in black ink.
   static const PlateCountry northernTransport = PlateCountry(
     code: 'ye',
     captionLines: <String>['نقل'],
@@ -107,7 +104,7 @@ abstract final class YemenCountry {
     flag: null,
   );
 
-  /// White ink on green, no usage word (source unclear — see [YemenUsage.government]).
+  /// White ink, no usage word (see [YemenUsage.government]).
   static const PlateCountry northernGovernment = PlateCountry(
     code: 'ye',
     captionLines: <String>[],
@@ -116,7 +113,7 @@ abstract final class YemenCountry {
     flag: null,
   );
 
-  /// White ink on black, no usage word.
+  /// White ink, no usage word.
   static const PlateCountry northernMilitaryClassic = PlateCountry(
     code: 'ye',
     captionLines: <String>[],
@@ -125,8 +122,7 @@ abstract final class YemenCountry {
     flag: null,
   );
 
-  /// Red ink on white, no usage word. Not referenced by specs; distinguished from
-  /// [northernMilitaryClassic] by [YemenThemes], not by this const.
+  /// Red ink, no usage word; told from [northernMilitaryClassic] by the theme.
   static const PlateCountry northernMilitaryModern = PlateCountry(
     code: 'ye',
     captionLines: <String>[],
@@ -135,19 +131,17 @@ abstract final class YemenCountry {
     flag: null,
   );
 
-  /// The northern block for [usage], or [northernMilitaryClassic] if System B
-  /// does not issue this usage — falls back to [northernGovernment] for police.
+  /// The northern block for [usage]; police takes [northernGovernment].
   static PlateCountry northernFor(YemenUsage usage) => switch (usage) {
     YemenUsage.private => northernPrivate,
     YemenUsage.forHire => northernForHire,
     YemenUsage.transport => northernTransport,
-    YemenUsage.government => northernGovernment,
+    YemenUsage.government || YemenUsage.police => northernGovernment,
     YemenUsage.military => northernMilitaryClassic,
-    YemenUsage.police => northernGovernment,
   };
 
-  // The southern governorates: the usage colour is the strip (and Marib's top
-  // band), painted as `PlateFill.panel`, so it rides on the country block.
+  // Southern governorates: the usage colour is the strip (and Marib's top band),
+  // painted as `PlateFill.panel`, so it rides on the country block.
 
   /// Private: blue strip.
   static const PlateCountry southernPrivate = PlateCountry(
@@ -181,13 +175,12 @@ abstract final class YemenCountry {
     panelTextColor: YemenColors.southernInk,
   );
 
-  /// Temporary and police: the blue of the private strip, on the right-hand
-  /// مؤقت strip and the الشرطة band.
+  /// Temporary and police share the private blue (the مؤقت strip, the الشرطة band).
   static const PlateCountry southernTemporary = southernPrivate;
   static const PlateCountry southernPolice = southernPrivate;
 
-  /// The southern strip colour for [usage]. Military is not issued in the
-  /// south; it falls back to private, as [unifiedFor] falls back to blank.
+  /// The southern strip for [usage]; military is not issued there and falls back
+  /// to private.
   static PlateCountry southernFor(YemenUsage usage) => switch (usage) {
     YemenUsage.private => southernPrivate,
     YemenUsage.forHire => southernForHire,

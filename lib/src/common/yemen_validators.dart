@@ -2,11 +2,9 @@ import 'package:plate_core/plate_core.dart';
 
 import 'yemen_governorates.dart';
 
-/// Judges a System A (2026 unified) plate value. Gated on the side code
-/// (the last register) so validation starts only after the vehicle number is entered.
-/// Checks only the side code's shape, not its semantics (see TODO in [validateFields]).
+/// Judges a System A (2026 unified) plate, gated on the side code so it stays
+/// quiet until the number is entered. The side code is checked for shape only.
 class YemenUnifiedValidator extends GatedPlateValidator {
-  /// A stateless rule; hold one as a `const`.
   const YemenUnifiedValidator();
 
   @override
@@ -37,8 +35,6 @@ class YemenUnifiedValidator extends GatedPlateValidator {
     sideCode: entry.group('sideCode'),
   );
 
-  /// [number] is 4–6 digits; [sideCode] is the two-digit code in the blue panel.
-  /// Side code is checked for shape only (see TODO in [validateFields]).
   // TODO(side-code): no source pins down which digit encodes what; stay opaque.
   static PlateValidation validateFields({
     required String number,
@@ -62,11 +58,10 @@ class YemenUnifiedValidator extends GatedPlateValidator {
   }
 }
 
-/// Judges a System B (1993 northern) plate value. Gated on the serial (the last
-/// register). Checks more than [YemenUnifiedValidator] because System B's grammar
-/// is documented: governorate code 1..22, serial never zero-padded.
+/// Judges a System B (1993 northern) plate, gated on the serial. Checks more
+/// than [YemenUnifiedValidator] because this grammar is documented: governorate
+/// 1..22, serial never zero-padded.
 class YemenNorthernValidator extends GatedPlateValidator {
-  /// A stateless rule; hold one as a `const`.
   const YemenNorthernValidator();
 
   @override
@@ -105,8 +100,7 @@ class YemenNorthernValidator extends GatedPlateValidator {
     serial: entry.group('serial'),
   );
 
-  /// [governorate] is the upper register (1–2 digits); [serial] is the lower.
-  /// Governorate: `'05'` and `'5'` are the same (two-cell padding). Serial: no leading zeros.
+  /// `'05'` and `'5'` are the same governorate (two-cell padding).
   static PlateValidation validateFields({
     required String governorate,
     required String serial,
@@ -140,7 +134,6 @@ class YemenNorthernValidator extends GatedPlateValidator {
 /// Shabwah and Marib, Aden's and Taiz's. Gated on the serial. The artwork shows
 /// three to five digits; nothing more of the grammar is published.
 class YemenSouthernValidator extends GatedPlateValidator {
-  /// A stateless rule; hold one as a `const`.
   const YemenSouthernValidator();
 
   @override

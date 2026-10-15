@@ -1,11 +1,8 @@
 import 'package:flutter/widgets.dart';
 
-/// The colours of the Riyadh plate. Field and ink are the same on every
-/// category; what varies is the strip carrying the emblem and `KSA`.
-///
-/// The strip colours are sampled from the Wikipedia artwork (`zone` fills of
-/// the flattened references), not read from the article's adjectives: the
-/// "silver" one is a light grey, the "green" one a pure green.
+/// The colours of the Riyadh plate. Field and ink are shared; only the strip
+/// varies. Strip colours are sampled from the Wikipedia artwork, not the
+/// article's adjectives: "silver" is a light grey, "green" a pure green.
 abstract final class RiyadhColors {
   static const Color white = Color(0xFFFFFFFF);
   static const Color ink = Color(0xFF000000);
