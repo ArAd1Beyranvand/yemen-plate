@@ -1,7 +1,6 @@
+import 'package:flutter/widgets.dart';
 import 'package:plate_alphabet/plate_alphabet.dart';
 import 'package:plate_core/plate_core.dart';
-
-import 'package:flutter/widgets.dart';
 
 import 'riyadh_colors.dart';
 import 'riyadh_country.dart';

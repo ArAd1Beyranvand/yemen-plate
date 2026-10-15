@@ -1,5 +1,7 @@
-import 'package:plate_core/plate_core.dart';
+import 'dart:math';
+
 import 'package:flutter/widgets.dart';
+import 'package:plate_core/plate_core.dart';
 
 import '../common/yemen_alphabets.dart';
 import '../common/yemen_country.dart';
@@ -141,10 +143,6 @@ class YemenSouthernGovernorate {
 /// So one spec per governorate and digit count serves private, hire,
 /// commercial and government alike.
 abstract final class YemenGovernoratePlates {
-  // ---------------------------------------------------------------------------
-  // Backgrounds. Every strip and divider runs to the frame.
-  // ---------------------------------------------------------------------------
-
   static PlateSection _top(bool banded) =>
       banded ? const PlateSection.fill(PlateFill.panel) : PlateSection.plain;
 
@@ -215,10 +213,6 @@ abstract final class YemenGovernoratePlates {
         const PlatePart(PlateSection.plain),
       ]);
 
-  // ---------------------------------------------------------------------------
-  // Pieces.
-  // ---------------------------------------------------------------------------
-
   /// A label whose ink is centred on ([cx], [cy]). The box is generous; a
   /// label is positioned by its box's centre and is free to overflow it.
   static PlateLabel _centred(
@@ -250,7 +244,7 @@ abstract final class YemenGovernoratePlates {
   /// The pitch for [count] digits across [span]: a full bold digit when it
   /// fits, otherwise an even share and the slot shrinks the glyph.
   static double _pitch(int count, double span) =>
-      span / count < _Layout.digitPitch ? span / count : _Layout.digitPitch;
+      min(span / count, _Layout.digitPitch);
 
   static List<PlateTextGroup> _groups(int count) => <PlateTextGroup>[
     PlateTextGroup(List<int>.generate(count, (i) => i), key: 'serial'),
@@ -260,10 +254,6 @@ abstract final class YemenGovernoratePlates {
   static String _stacked(String word) => word.split('').join('\n');
 
   static const PlatePanel _noPanel = PlatePanel(box: PlateBox(0, 0, 1, 1));
-
-  // ---------------------------------------------------------------------------
-  // Builders.
-  // ---------------------------------------------------------------------------
 
   /// The car plate: strip, name, [count]-digit serial. [count] is 4 on every
   /// published plate but Hadhramaut's private, which shows 5.
@@ -395,10 +385,7 @@ abstract final class YemenGovernoratePlates {
     );
   }
 
-  // ---------------------------------------------------------------------------
-  // The published plates, one per article row that differs in layout.
-  // Usage rows that differ only in strip colour share a spec.
-  // ---------------------------------------------------------------------------
+  // One spec per published layout; rows differing only in strip colour share it.
 
   static final PlateSpec hadhramaut = car(YemenSouthernGovernorate.hadhramaut);
   static final PlateSpec hadhramautFiveDigit = car(
