@@ -156,7 +156,6 @@ abstract final class YemenNorthernPlates {
     PlateTextGroup(<int>[1], key: 'serial'),
   ];
 
-  /// The car plate.
   static final PlateSpec car = PlateSpec(
     id: 'ye.northern.car',
     country: YemenCountry.northernPrivate,

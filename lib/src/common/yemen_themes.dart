@@ -20,7 +20,6 @@ abstract final class YemenThemes {
     plateRadiusRatio: _unifiedRadiusRatio,
   );
 
-  /// Private vehicles: black on blue.
   static const PlateTheme northernPrivate = PlateTheme.monochrome(
     field: YemenColors.blue,
     ink: YemenColors.darkInk,
@@ -38,7 +37,6 @@ abstract final class YemenThemes {
     plateRadiusRatio: _unifiedRadiusRatio,
   );
 
-  /// Taxis and buses: black on yellow.
   static const PlateTheme northernForHire = PlateTheme.monochrome(
     field: YemenColors.yellow,
     ink: YemenColors.darkInk,
@@ -47,7 +45,6 @@ abstract final class YemenThemes {
     plateRadiusRatio: _unifiedRadiusRatio,
   );
 
-  /// Goods vehicles: black on red.
   static const PlateTheme northernTransport = PlateTheme.monochrome(
     field: YemenColors.red,
     ink: YemenColors.darkInk,
@@ -56,7 +53,6 @@ abstract final class YemenThemes {
     plateRadiusRatio: _unifiedRadiusRatio,
   );
 
-  /// Government vehicles: white on green.
   static const PlateTheme northernGovernment = PlateTheme.monochrome(
     field: YemenColors.green,
     ink: YemenColors.lightInk,

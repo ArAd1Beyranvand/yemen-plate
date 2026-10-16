@@ -7,20 +7,19 @@ abstract final class RiyadhColors {
   static const Color white = Color(0xFFFFFFFF);
   static const Color ink = Color(0xFF000000);
 
-  /// Public transport and taxis. `KSA_-_License_Plate_-_Taxi`: `FFC913`.
+  /// Public transport and taxis.
   static const Color yellow = Color(0xFFFFC913);
 
-  /// Commercial. `Saudi_Arabia_License_Plate_-_Commercial`: `0079C1`.
+  /// Commercial.
   static const Color blue = Color(0xFF0079C1);
 
-  /// Temporary. `Saudi_Arabia_-_License_Plate_-_Temporary`: `C3C3C3`.
+  /// Temporary.
   static const Color silver = Color(0xFFC3C3C3);
 
-  /// Diplomatic. `Saudi_Arabia_-_License_Plate_-_Diplomatic`: `22B14C`.
+  /// Diplomatic.
   static const Color green = Color(0xFF22B14C);
 
-  /// The hologram sticker on the strip, as the artwork renders it (censored):
-  /// `898F9E`.
+  /// The hologram sticker on the strip, as the artwork renders it (censored).
   static const Color hologram = Color(0xFF898F9E);
 
   static const Color inactive = Color(0xFFB0B0B0);

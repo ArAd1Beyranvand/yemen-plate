@@ -10,22 +10,17 @@ class YemenUnifiedValidator extends GatedPlateValidator {
   @override
   String get gateGroup => 'sideCode';
 
-  /// Reported when the vehicle number holds something other than digits.
   static const String reasonNumberNotNumeric =
       'The vehicle number is digits only.';
 
-  /// Reported when the vehicle number is outside four to six digits.
   static const String reasonNumberLength =
       'The vehicle number is four to six digits.';
 
-  /// Reported when the side code holds something other than digits.
   static const String reasonSideCodeNotNumeric =
       'The side code is digits only.';
 
-  /// Reported when the side code is not exactly two digits.
   static const String reasonSideCodeLength = 'The side code is two digits.';
 
-  /// The shortest and longest vehicle number this system prints.
   static const int minNumberLength = 4;
   static const int maxNumberLength = 6;
 
@@ -67,30 +62,22 @@ class YemenNorthernValidator extends GatedPlateValidator {
   @override
   String get gateGroup => 'serial';
 
-  /// Reported when the governorate register holds something other than digits.
   static const String reasonGovernorateNotNumeric =
       'The governorate code is digits only.';
 
-  /// Reported when the governorate register is empty or longer than two
-  /// digits.
   static const String reasonGovernorateLength =
       'The governorate code is one or two digits.';
 
-  /// Reported when the governorate code is outside 1..22.
   static const String reasonGovernorateRange =
       'The governorate code is 1 to 22.';
 
-  /// Reported when the serial holds something other than digits.
   static const String reasonSerialNotNumeric = 'The serial is digits only.';
 
-  /// Reported when the serial is empty or longer than six digits.
   static const String reasonSerialLength = 'The serial is four to six digits.';
 
-  /// Reported when the serial starts with a zero.
   static const String reasonSerialLeadingZero =
       'The serial is not padded with leading zeros.';
 
-  /// The shortest and longest serial this system prints.
   static const int minSerialLength = 4;
   static const int maxSerialLength = 6;
 
@@ -139,14 +126,11 @@ class YemenSouthernValidator extends GatedPlateValidator {
   @override
   String get gateGroup => 'serial';
 
-  /// Reported when the serial holds something other than digits.
   static const String reasonSerialNotNumeric = 'The number is digits only.';
 
-  /// Reported when the serial is shorter than three or longer than five digits.
   static const String reasonSerialLength =
       'The number is three to five digits.';
 
-  /// The shortest and longest number the artwork shows.
   static const int minSerialLength = 3;
   static const int maxSerialLength = 5;
 

@@ -18,7 +18,6 @@ abstract final class YemenCountry {
     flag: null,
   );
 
-  /// خصوصي / PRIV.
   static const PlateCountry unifiedPrivate = PlateCountry(
     code: 'ye',
     captionLines: <String>['خصوصي', 'PRIV.'],
@@ -27,7 +26,6 @@ abstract final class YemenCountry {
     flag: null,
   );
 
-  /// أجرة / TAXI.
   static const PlateCountry unifiedForHire = PlateCountry(
     code: 'ye',
     captionLines: <String>['أجرة', 'TAXI'],
@@ -36,7 +34,6 @@ abstract final class YemenCountry {
     flag: null,
   );
 
-  /// نقل / TRANS.
   static const PlateCountry unifiedTransport = PlateCountry(
     code: 'ye',
     captionLines: <String>['نقل', 'TRANS.'],
@@ -45,7 +42,6 @@ abstract final class YemenCountry {
     flag: null,
   );
 
-  /// حكومي / GOV.
   static const PlateCountry unifiedGovernment = PlateCountry(
     code: 'ye',
     captionLines: <String>['حكومي', 'GOV.'],
@@ -54,7 +50,6 @@ abstract final class YemenCountry {
     flag: null,
   );
 
-  /// شرطة / POLICE.
   static const PlateCountry unifiedPolice = PlateCountry(
     code: 'ye',
     captionLines: <String>['شرطة', 'POLICE'],
@@ -95,7 +90,6 @@ abstract final class YemenCountry {
     flag: null,
   );
 
-  /// نقل in black ink.
   static const PlateCountry northernTransport = PlateCountry(
     code: 'ye',
     captionLines: <String>['نقل'],

@@ -129,8 +129,8 @@ abstract final class _Layout {
     ),
   );
 
-  /// Rules, in plate coordinates. `rowEnd` is the horizontal rule between the
-  /// rows; the verticals are the column edges, thickness `colRule`.
+  /// `rowEnd` is the horizontal rule between the rows; the verticals are the
+  /// column edges, thickness `colRule`.
   static const double rowEnd = 79.2, rowRule = 2.1;
   static const double euRowEnd = 56.3, euRowRule = 2.5;
   static const double colRule = 2.6;
@@ -150,16 +150,15 @@ enum _Symbol {
   final String glyph;
 }
 
-/// The Riyadh plates: three letters and up to four digits, in the
-/// US size ([private] ...) or the EU size ([euPrivate] ...), one per category.
-/// The category is the strip: its colour is the country's panel colour
+/// Three letters and up to four digits, in the US size ([private] ...) or the
+/// EU size ([euPrivate] ...), one per category. The category is the strip: its colour is the country's panel colour
 /// (`RiyadhCountry.byCategory`) and its symbol is a label here, so pair
 /// each spec with the matching country at the canvas. Groups `letters`,
 /// `serial`; values are stored in Latin (`T N J 7 6 5 3`).
 ///
 /// Not implemented: the pre-2006 and pre-2014 plates (the latter carries a
 /// flag, not the strip), and the car-type symbol's exact artwork — it is the
-/// Unicode glyph. The article names no Israel-specific value.
+/// Unicode glyph.
 abstract final class RiyadhPlates {
   static final PlateSpec private = _build(
     'ye.riyadh.us.private',

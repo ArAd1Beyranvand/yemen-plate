@@ -28,12 +28,7 @@ abstract final class YemenUnifiedSerialGenerator {
     int count, {
     Random? random,
   }) {
-    final Random rnd = random ?? Random();
-    return List<List<String?>>.generate(
-      count,
-      (_) => generate(spec, random: rnd),
-      growable: false,
-    );
+    return _many(spec, count, random, generate);
   }
 }
 
@@ -74,13 +69,22 @@ abstract final class YemenNorthernSerialGenerator {
     int count, {
     Random? random,
   }) {
-    final Random rnd = random ?? Random();
-    return List<List<String?>>.generate(
-      count,
-      (_) => generate(spec, random: rnd),
-      growable: false,
-    );
+    return _many(spec, count, random, generate);
   }
+}
+
+List<List<String?>> _many(
+  PlateSpec spec,
+  int count,
+  Random? random,
+  List<String?> Function(PlateSpec, {Random? random}) generate,
+) {
+  final Random rnd = random ?? Random();
+  return List<List<String?>>.generate(
+    count,
+    (_) => generate(spec, random: rnd),
+    growable: false,
+  );
 }
 
 // Fills each slot in [indices] with random digits of a random length from the
