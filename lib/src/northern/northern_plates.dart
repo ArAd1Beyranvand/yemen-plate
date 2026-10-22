@@ -61,14 +61,14 @@ abstract final class YemenNorthernPlates {
   // Core sets a glyph at `0.72 * cellHeight` in Roboto (cap 0.711 em), not the
   // plate's own square Kufic; see the README's `## Fonts`.
   static const PlateSlot _carGovernorate = PlateSlot(
-    alphabet: YemenAlphabets.iranianDigits,
+    alphabet: YemenAlphabets.iranshahrDigits,
     box: PlateBox(24, 95, 88, 89),
     length: 2,
     minLength: 1,
   );
 
   static const PlateSlot _carSerial = PlateSlot(
-    alphabet: YemenAlphabets.iranianDigits,
+    alphabet: YemenAlphabets.iranshahrDigits,
     box: PlateBox(140, 95, 390, 89),
     length: 6,
     minLength: 4,
@@ -118,14 +118,14 @@ abstract final class YemenNorthernPlates {
   ]);
 
   static const PlateSlot _motoGovernorate = PlateSlot(
-    alphabet: YemenAlphabets.iranianDigits,
+    alphabet: YemenAlphabets.iranshahrDigits,
     box: PlateBox(13, 95, 48, 89),
     length: 2,
     minLength: 1,
   );
 
   static const PlateSlot _motoSerial = PlateSlot(
-    alphabet: YemenAlphabets.iranianDigits,
+    alphabet: YemenAlphabets.iranshahrDigits,
     box: PlateBox(75, 95, 209, 89),
     length: 6,
     minLength: 4,

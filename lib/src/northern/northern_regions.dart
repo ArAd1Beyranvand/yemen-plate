@@ -16,6 +16,5 @@ abstract final class YemenRegions {
   }
 
   /// A [PlateLabelResolver] for [PlateSpec.resolveRegion].
-  static String? captionOf(String Function(String key) group) =>
-      lookup(group('governorate'));
+  static String? captionOf(String Function(String key) group) => lookup(group('governorate'));
 }

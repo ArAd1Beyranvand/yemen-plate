@@ -10,8 +10,7 @@ import 'riyadh_country.dart';
 /// height. [glyph] is the printed size for an echo row, which is free of its
 /// box; a slot's glyph is its box height.
 class _Row {
-  const _Row(this.cx, this.pitch, this.top, this.height, [double? glyph])
-    : glyph = glyph ?? height;
+  const _Row(this.cx, this.pitch, this.top, this.height, [double? glyph]) : glyph = glyph ?? height;
 
   final double cx, pitch, top, height, glyph;
   double get left => cx - pitch.abs() / 2;
@@ -160,11 +159,7 @@ enum _Symbol {
 /// flag, not the strip), and the car-type symbol's exact artwork — it is the
 /// Unicode glyph.
 abstract final class RiyadhPlates {
-  static final PlateSpec private = _build(
-    'ye.riyadh.us.private',
-    _Layout.us,
-    _Symbol.circle,
-  );
+  static final PlateSpec private = _build('ye.riyadh.us.private', _Layout.us, _Symbol.circle);
   static final PlateSpec publicTransport = _build(
     'ye.riyadh.us.public_transport',
     _Layout.us,
@@ -180,17 +175,9 @@ abstract final class RiyadhPlates {
     _Layout.us,
     _Symbol.triangleLeft,
   );
-  static final PlateSpec diplomatic = _build(
-    'ye.riyadh.us.diplomatic',
-    _Layout.us,
-    _Symbol.none,
-  );
+  static final PlateSpec diplomatic = _build('ye.riyadh.us.diplomatic', _Layout.us, _Symbol.none);
 
-  static final PlateSpec euPrivate = _build(
-    'ye.riyadh.eu.private',
-    _Layout.eu,
-    _Symbol.circle,
-  );
+  static final PlateSpec euPrivate = _build('ye.riyadh.eu.private', _Layout.eu, _Symbol.circle);
   static final PlateSpec euPublicTransport = _build(
     'ye.riyadh.eu.public_transport',
     _Layout.eu,
@@ -206,11 +193,7 @@ abstract final class RiyadhPlates {
     _Layout.eu,
     _Symbol.triangleLeft,
   );
-  static final PlateSpec euDiplomatic = _build(
-    'ye.riyadh.eu.diplomatic',
-    _Layout.eu,
-    _Symbol.none,
-  );
+  static final PlateSpec euDiplomatic = _build('ye.riyadh.eu.diplomatic', _Layout.eu, _Symbol.none);
 
   static List<PlateSpec> get all => <PlateSpec>[
     private, publicTransport, commercial, temporary, diplomatic, //
@@ -218,11 +201,10 @@ abstract final class RiyadhPlates {
   ];
 
   /// Two stacked rows, split by the thin rule across the row's whole width.
-  static PlateSection _rows(double end, double rule) =>
-      PlateSection.rows(<PlatePart>[
-        PlatePart(PlateSection.plain, end: end, divider: rule),
-        const PlatePart(PlateSection.plain),
-      ]);
+  static PlateSection _rows(double end, double rule) => PlateSection.rows(<PlatePart>[
+    PlatePart(PlateSection.plain, end: end, divider: rule),
+    const PlatePart(PlateSection.plain),
+  ]);
 
   /// US: digits | letters | strip.
   static final PlateSection _usBackground = PlateSection.columns(<PlatePart>[
@@ -266,18 +248,17 @@ abstract final class RiyadhPlates {
       height: r.height,
       pitch: r.pitch,
     );
-    List<PlateMirror> echo(PlateAlphabet a, _Row r, Iterable<int> sources) =>
-        plateEcho(
-          sources: sources,
-          left: r.left,
-          top: r.top,
-          width: r.width,
-          height: r.height,
-          pitch: r.pitch,
-          glyphHeight: r.glyph,
-          alphabet: a,
-          editable: true,
-        );
+    List<PlateMirror> echo(PlateAlphabet a, _Row r, Iterable<int> sources) => plateEcho(
+      sources: sources,
+      left: r.left,
+      top: r.top,
+      width: r.width,
+      height: r.height,
+      pitch: r.pitch,
+      glyphHeight: r.glyph,
+      alphabet: a,
+      editable: true,
+    );
 
     return PlateSpec(
       id: id,
@@ -292,11 +273,9 @@ abstract final class RiyadhPlates {
       ],
       mirrors: <PlateMirror>[
         ...echo(RiyadhAlphabets.lettersArabic, d.lettersAr, <int>[0, 1, 2]),
-        ...echo(RiyadhAlphabets.arabicDigits, d.digitsAr, <int>[3, 4, 5, 6]),
+        ...echo(RiyadhAlphabets.iranshahrDigits, d.digitsAr, <int>[3, 4, 5, 6]),
       ],
-      bands: <PlateBand>[
-        PlateBand(box: s.hologram, color: RiyadhColors.hologram),
-      ],
+      bands: <PlateBand>[PlateBand(box: s.hologram, color: RiyadhColors.hologram)],
       labels: <PlateLabel>[
         PlateLabel(text: 'السعودية', box: s.name, glyphHeight: s.nameGlyph),
         PlateLabel(
@@ -306,11 +285,7 @@ abstract final class RiyadhPlates {
           lineHeight: s.ksaLineHeight,
         ),
         if (symbol != _Symbol.none)
-          PlateLabel(
-            text: symbol.glyph,
-            box: s.symbol,
-            glyphHeight: s.symbolGlyph,
-          ),
+          PlateLabel(text: symbol.glyph, box: s.symbol, glyphHeight: s.symbolGlyph),
       ],
       textGroups: const <PlateTextGroup>[
         PlateTextGroup(<int>[0, 1, 2], key: 'letters'),
